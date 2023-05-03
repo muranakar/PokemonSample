@@ -27,7 +27,7 @@ struct PokemonAPI {
     }
 
     func fetchPokemonDetail(urlString: String) -> PokemonDetail {
-        guard let url = URL(string: "\(urlString)") else { return }
+        guard let url = URL(string: urlString) else { return }
         let task = session.dataTask(with: url) { (data, response, error) in
             guard let data = data else { return }
             do {
