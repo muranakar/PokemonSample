@@ -8,11 +8,13 @@
 import Foundation
 
 struct PokemonAPI {
-    static func fetchPokemon() async throws -> PokemonList {
+    let session = URLSession.shared
+
+    func fetchPokemon() async throws -> PokemonList {
         guard let url = URL(string: "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1000") else {
             throw NSError(domain: "", code: 400, userInfo: nil)
         }
-        let session = URLSession.shared
+
         do {
             let (data, _) = try await session.data(from: url)
             let decoder = JSONDecoder()
@@ -22,9 +24,8 @@ struct PokemonAPI {
             throw error
         }
     }
-    static func convertDetailDate(id: Pokemon) {
+    func convertDetailDate(id: Pokemon) {
         guard let url = URL(string: "\(id.url)") else { return }
-        let session = URLSession.shared
         let task = session.dataTask(with: url) { (data, response, error) in
             guard let data = data else { return }
             do {
