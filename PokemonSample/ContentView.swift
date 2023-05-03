@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var pokemonList: PokemonList?
-
+    private let pokemonAPI = PokemonAPI()
     var body: some View {
         NavigationView {
             VStack {
@@ -26,7 +26,7 @@ struct ContentView: View {
             }
             .task {
                 do {
-                    self.pokemonList = try await PokemonAPI.fetchPokemon()
+                    self.pokemonList = try await pokemonAPI.fetchPokemon()
                     print(pokemonList)
                 } catch {
                     print(error.localizedDescription)
