@@ -15,23 +15,23 @@ struct ContentView: View {
             VStack {
                 if let pokemonList = pokemonList {
                     List(pokemonList.results , id: \.name) { pokemon in
-                               NavigationLink(destination: PokemonDetailView(url: pokemon.url)) {
-                                   Text(pokemon.name)
-                               }
-                           }
-                           .navigationBarTitle("Pokemon List")
+                        NavigationLink(destination: PokemonDetailView(url: pokemon.url)) {
+                            Text(pokemon.name)
+                        }
+                    }
+                    .navigationBarTitle("Pokemon List")
                 } else {
                     ProgressView("Loading...")
                 }
             }
             .task {
-                       do {
-                           self.pokemonList = try await PokemonAPI.fetchPokemon()
-                           print(pokemonList)
-                       } catch {
-                           print(error.localizedDescription)
-                       }
-                   }
+                do {
+                    self.pokemonList = try await PokemonAPI.fetchPokemon()
+                    print(pokemonList)
+                } catch {
+                    print(error.localizedDescription)
+                }
+            }
         }
     }
 }

@@ -9,19 +9,19 @@ import SwiftUI
 
 struct PokemonImageView: View {
     let imageUrl: URL?
-
-      var body: some View {
-          if let imageUrl = imageUrl,
-                let imageData = try? Data(contentsOf: imageUrl) {
-              return Image(uiImage: UIImage(data: imageData)!)
-                  .resizable()
-                  .aspectRatio(contentMode: .fit)
-          } else {
-              return Image(systemName: "questionmark.circle")
-                  .resizable()
-                  .aspectRatio(contentMode: .fit)
-          }
-      }
+    
+    var body: some View {
+        if let imageUrl = imageUrl,
+           let imageData = try? Data(contentsOf: imageUrl) {
+            return Image(uiImage: UIImage(data: imageData)!)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+        } else {
+            return Image(systemName: "questionmark.circle")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+        }
+    }
 }
 
 struct PokemonImageView_Previews: PreviewProvider {

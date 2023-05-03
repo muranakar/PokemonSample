@@ -49,7 +49,7 @@ struct PokemonAPI {
             }
         }
         task.resume()
-
+        
     }
 }
 struct PokemonDetail: Codable {
@@ -61,7 +61,7 @@ struct PokemonDetail: Codable {
     let types: [PokemonType]
     let abilities: [Ability]
     let sprites: Sprites
-
+    
     enum CodingKeys: String, CodingKey {
         case id
         case name
@@ -94,7 +94,7 @@ struct AbilityName: Codable {
 
 struct Sprites: Codable {
     let frontDefault: String?
-
+    
     enum CodingKeys: String, CodingKey {
         case frontDefault = "front_default"
     }

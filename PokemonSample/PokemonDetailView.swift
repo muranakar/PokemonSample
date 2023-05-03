@@ -10,7 +10,7 @@ import SwiftUI
 struct PokemonDetailView: View {
     let url: String
     @State private var pokemon: PokemonDetail?
-
+    
     var body: some View {
         VStack {
             if let pokemon = pokemon {
