@@ -26,17 +26,17 @@ struct PokemonAPI {
         }
     }
 
-    func fetchPokemonDetail(urlString: String) -> PokemonDetail {
-        guard let url = URL(string: urlString) else { return }
-        let task = session.dataTask(with: url) { (data, response, error) in
-            guard let data = data else { return }
-            do {
-                let pokemon = try JSONDecoder().decode(PokemonDetail.self, from: data)
-                print(pokemon)
-            } catch let error {
-                print(error)
-            }
+    func fetchPokemonDetail(urlString: String)  async throws  -> PokemonDetail {
+        guard let url = URL(string: urlString) else {
+            throw NSError(domain: "", code: 400, userInfo: nil)
         }
-        task.resume()
+        do {
+            let (data, _) = try await session.data(from: url)
+            let decoder = JSONDecoder()
+            let pokemon = try decoder.decode(PokemonDetail.self, from: data)
+            return pokemon
+        } catch {
+            throw error
+        }
     }
 }

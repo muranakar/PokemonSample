@@ -26,7 +26,7 @@ struct ContentView: View {
             }
             .task {
                 do {
-                    self.pokemonList = try await pokemonAPI.fetchPokemon()
+                    self.pokemonList = try await pokemonAPI.fetchPokemonList()
                     print(pokemonList)
                 } catch {
                     print(error.localizedDescription)
