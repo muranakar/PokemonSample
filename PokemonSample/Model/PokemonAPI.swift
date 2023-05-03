@@ -10,7 +10,8 @@ import Foundation
 struct PokemonAPI {
     let session = URLSession.shared
 
-    func fetchPokemon() async throws -> PokemonList {
+    // 1000件取得している。
+    func fetchPokemonList() async throws -> PokemonList {
         guard let url = URL(string: "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1000") else {
             throw NSError(domain: "", code: 400, userInfo: nil)
         }
@@ -24,8 +25,9 @@ struct PokemonAPI {
             throw error
         }
     }
-    func convertDetailDate(id: Pokemon) {
-        guard let url = URL(string: "\(id.url)") else { return }
+
+    func fetchPokemonDetail(urlString: String) -> PokemonDetail {
+        guard let url = URL(string: "\(urlString)") else { return }
         let task = session.dataTask(with: url) { (data, response, error) in
             guard let data = data else { return }
             do {
@@ -36,6 +38,5 @@ struct PokemonAPI {
             }
         }
         task.resume()
-
     }
 }
