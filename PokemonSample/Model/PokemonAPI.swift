@@ -15,7 +15,6 @@ struct PokemonAPI {
         guard let url = URL(string: "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1000") else {
             throw NSError(domain: "", code: 400, userInfo: nil)
         }
-
         do {
             let (data, _) = try await session.data(from: url)
             let decoder = JSONDecoder()
