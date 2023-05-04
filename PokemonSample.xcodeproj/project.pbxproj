@@ -19,6 +19,7 @@
 		B27DB6742A031B4D0060C719 /* PokemonImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27DB6732A031B4D0060C719 /* PokemonImageView.swift */; };
 		B27DB6782A0324540060C719 /* PokemonList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27DB6772A0324540060C719 /* PokemonList.swift */; };
 		B27DB67A2A0324750060C719 /* PokemonAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27DB6792A0324750060C719 /* PokemonAPI.swift */; };
+		B2D00E5C2A044ECF00139F52 /* PokemonAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D00E5B2A044ECF00139F52 /* PokemonAPIError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		B27DB6732A031B4D0060C719 /* PokemonImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonImageView.swift; sourceTree = "<group>"; };
 		B27DB6772A0324540060C719 /* PokemonList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonList.swift; sourceTree = "<group>"; };
 		B27DB6792A0324750060C719 /* PokemonAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonAPI.swift; sourceTree = "<group>"; };
+		B2D00E5B2A044ECF00139F52 /* PokemonAPIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonAPIError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 				B27DB6792A0324750060C719 /* PokemonAPI.swift */,
 				B27DB66F2A030EFC0060C719 /* PokemonDetail.swift */,
 				B27DB6772A0324540060C719 /* PokemonList.swift */,
+				B2D00E5B2A044ECF00139F52 /* PokemonAPIError.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 				B27DB6452A030E530060C719 /* PokemonSampleApp.swift in Sources */,
 				B27DB67A2A0324750060C719 /* PokemonAPI.swift in Sources */,
 				B27DB6702A030EFC0060C719 /* PokemonDetail.swift in Sources */,
+				B2D00E5C2A044ECF00139F52 /* PokemonAPIError.swift in Sources */,
 				B27DB6742A031B4D0060C719 /* PokemonImageView.swift in Sources */,
 				B27DB6782A0324540060C719 /* PokemonList.swift in Sources */,
 			);
