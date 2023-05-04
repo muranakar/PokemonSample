@@ -11,15 +11,29 @@ struct PokemonImageView: View {
     let imageUrl: URL?
     
     var body: some View {
-        if let imageUrl = imageUrl,
-           let imageData = try? Data(contentsOf: imageUrl) {
-            return Image(uiImage: UIImage(data: imageData)!)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-        } else {
-            return Image(systemName: "questionmark.circle")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
+        VStack{
+            if let imageUrl = imageUrl {
+                AsyncImage(url: imageUrl) { phase in
+                    switch phase {
+                    case .empty:
+                        ProgressView("Loading...")
+                    case .success(let image):
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                    case .failure:
+                        Image(systemName: "xmark.circle")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                    @unknown default:
+                        fatalError()
+                    }
+                }
+            } else {
+                Image(systemName: "questionmark.circle")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+            }
         }
     }
 }
