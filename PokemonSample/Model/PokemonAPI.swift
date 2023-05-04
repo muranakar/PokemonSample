@@ -10,9 +10,11 @@ import Foundation
 struct PokemonAPI {
     let session = URLSession.shared
 
+    let baseUrl = "https://pokeapi.co/api/v2"
+
     // 1000件取得している。
     func fetchPokemonList() async throws -> PokemonList {
-        guard let url = URL(string: "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1000") else {
+        guard let url = URL(string: "\(baseUrl)/pokemon/?offset=0&limit=1000") else {
             throw NSError(domain: "", code: 400, userInfo: nil)
         }
         do {
@@ -25,8 +27,8 @@ struct PokemonAPI {
         }
     }
 
-    func fetchPokemonDetail(urlString: String)  async throws  -> PokemonDetail {
-        guard let url = URL(string: urlString) else {
+    func fetchPokemonDetail(pokemon: Pokemon)  async throws  -> PokemonDetail {
+        guard let url = URL(string: pokemon.url ) else {
             throw NSError(domain: "", code: 400, userInfo: nil)
         }
         do {
