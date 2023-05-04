@@ -12,7 +12,6 @@ struct PokemonList: Codable {
     let next: String?
     let previous: String?
     let results: [Pokemon]
-
 }
 
 struct Pokemon: Codable {

@@ -15,27 +15,36 @@ struct PokemonAPI {
     // 1000件取得している。
     func fetchPokemonList() async throws -> PokemonList {
         guard let url = URL(string: "\(baseUrl)/pokemon/?offset=0&limit=1000") else {
-            throw NSError(domain: "", code: 400, userInfo: nil)
+            throw PokemonAPIError.invalidURL
         }
         do {
             let (data, _) = try await session.data(from: url)
             let decoder = JSONDecoder()
             let pokemon = try decoder.decode(PokemonList.self, from: data)
             return pokemon
+        } catch _ as DecodingError {
+            throw PokemonAPIError.decodingFailed
+        } catch let error as URLError {
+            throw PokemonAPIError.networkError(error)
         } catch {
             throw error
         }
     }
 
-    func fetchPokemonDetail(pokemon: Pokemon)  async throws  -> PokemonDetail {
-        guard let url = URL(string: pokemon.url ) else {
-            throw NSError(domain: "", code: 400, userInfo: nil)
+    func fetchPokemonDetail(pokemon: Pokemon) async throws -> PokemonDetail {
+        guard let url = URL(string: pokemon.url) else {
+            throw PokemonAPIError.invalidURL
         }
+
         do {
             let (data, _) = try await session.data(from: url)
             let decoder = JSONDecoder()
             let pokemon = try decoder.decode(PokemonDetail.self, from: data)
             return pokemon
+        } catch  _ as DecodingError {
+            throw PokemonAPIError.decodingFailed
+        } catch let error as URLError {
+            throw PokemonAPIError.networkError(error)
         } catch {
             throw error
         }
