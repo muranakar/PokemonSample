@@ -10,7 +10,7 @@ import Foundation
 struct PokemonAPI {
     let session = URLSession.shared
 
-    let baseUrl = "https://pokeapi.co/api/v2"
+    private let baseUrl = "https://pokeapi.co/api/v2"
 
     // 1000件取得している。
     func fetchPokemonList() async throws -> PokemonList {
