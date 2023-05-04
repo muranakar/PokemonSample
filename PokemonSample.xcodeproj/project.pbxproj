@@ -107,8 +107,8 @@
 				B27DB6442A030E530060C719 /* PokemonSampleApp.swift */,
 				B27DB6462A030E530060C719 /* ContentView.swift */,
 				B27DB6712A0317430060C719 /* PokemonDetailView.swift */,
-				B27DB67B2A0324A20060C719 /* Model */,
 				B27DB6732A031B4D0060C719 /* PokemonImageView.swift */,
+				B27DB67B2A0324A20060C719 /* Model */,
 				B27DB6482A030E540060C719 /* Assets.xcassets */,
 				B27DB64A2A030E540060C719 /* Preview Content */,
 			);
