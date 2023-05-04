@@ -15,7 +15,7 @@ struct ContentView: View {
             VStack {
                 if let pokemonList = pokemonList {
                     List(pokemonList.results , id: \.name) { pokemon in
-                        NavigationLink(destination: PokemonDetailView(url: pokemon.url)) {
+                        NavigationLink(destination: PokemonDetailView(pokemon: pokemon)) {
                             Text(pokemon.name)
                         }
                     }

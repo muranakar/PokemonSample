@@ -8,25 +8,24 @@
 import SwiftUI
 
 struct PokemonDetailView: View {
-    let url: String
-    @State private var pokemon: PokemonDetail?
+    let pokemon: Pokemon
+    @State var pokemonDetail: PokemonDetail?
+    let pokemonAPI = PokemonAPI()
     
     var body: some View {
         VStack {
-            if let pokemon = pokemon {
-                PokemonImageView(imageUrl: URL(string: pokemon.sprites.frontDefault ?? ""))
-                Text("Name: \(pokemon.name)")
-                Text("Height: \(pokemon.height)")
-                Text("Weight: \(pokemon.weight)")
+            if let pokemonDetail = pokemonDetail {
+                PokemonImageView(imageUrl: URL(string: pokemonDetail.sprites.frontDefault ?? ""))
+                Text("Name: \(pokemonDetail.name)")
+                Text("Height: \(pokemonDetail.height)")
+                Text("Weight: \(pokemonDetail.weight)")
             } else {
                 ProgressView("Loading...")
             }
         }
         .task {
             do {
-                let (data, _) = try await URLSession.shared.data(from: URL(string: url)!)
-                let pokemon = try JSONDecoder().decode(PokemonDetail.self, from: data)
-                self.pokemon = pokemon
+                pokemonDetail = try await pokemonAPI.fetchPokemonDetail(pokemon: pokemon)
             } catch {
                 print(error.localizedDescription)
             }
@@ -36,6 +35,8 @@ struct PokemonDetailView: View {
 }
 struct PokemonDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        PokemonDetailView(url: "")
+        PokemonDetailView(
+            pokemon:Pokemon(name: "",url: "")
+        )
     }
 }
