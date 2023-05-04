@@ -49,7 +49,6 @@
 		B27DB65B2A030E550060C719 /* PokemonSampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PokemonSampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B27DB65F2A030E550060C719 /* PokemonSampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonSampleUITests.swift; sourceTree = "<group>"; };
 		B27DB6612A030E550060C719 /* PokemonSampleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonSampleUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		B27DB66E2A030ECC0060C719 /* Pokemon.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Pokemon.json; sourceTree = "<group>"; };
 		B27DB66F2A030EFC0060C719 /* PokemonDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetail.swift; sourceTree = "<group>"; };
 		B27DB6712A0317430060C719 /* PokemonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailView.swift; sourceTree = "<group>"; };
 		B27DB6732A031B4D0060C719 /* PokemonImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonImageView.swift; sourceTree = "<group>"; };
@@ -110,7 +109,6 @@
 				B27DB6712A0317430060C719 /* PokemonDetailView.swift */,
 				B27DB67B2A0324A20060C719 /* Model */,
 				B27DB6732A031B4D0060C719 /* PokemonImageView.swift */,
-				B27DB66E2A030ECC0060C719 /* Pokemon.json */,
 				B27DB6482A030E540060C719 /* Assets.xcassets */,
 				B27DB64A2A030E540060C719 /* Preview Content */,
 			);
