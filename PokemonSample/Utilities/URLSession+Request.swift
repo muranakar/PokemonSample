@@ -65,9 +65,9 @@ extension URLSession {
      - returns: Returns the web service response or throws an HTTPError
      */
     @available(macOS 12.0, iOS 15.0, tvOS 15.0, watchOS 8.0, *)
-    func startData(_ request: URLRequest) async throws -> Data {
+    func startData(_ url: URL) async throws -> Data {
         do {
-            let (data, response) = try await self.data(for: request)
+            let (data, response) = try await self.data(from: url)
 
             if let response = response as? HTTPURLResponse {
                 let status = HTTPStatus(code: response.statusCode)

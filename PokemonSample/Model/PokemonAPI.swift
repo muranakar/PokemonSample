@@ -18,16 +18,12 @@ struct PokemonAPI {
             throw PokemonAPIError.invalidURL
         }
         do {
-            let (data, _) = try await session.data(from: url)
+            let data = try await session.startData(url)
             let decoder = JSONDecoder()
             let pokemon = try decoder.decode(PokemonList.self, from: data)
             return pokemon
         } catch _ as DecodingError {
             throw PokemonAPIError.decodingFailed
-        } catch let error as URLError {
-            throw PokemonAPIError.networkError(error)
-        } catch {
-            throw error
         }
     }
 
@@ -37,16 +33,12 @@ struct PokemonAPI {
         }
 
         do {
-            let (data, _) = try await session.data(from: url)
+            let data = try await session.startData(url)
             let decoder = JSONDecoder()
             let pokemon = try decoder.decode(PokemonDetail.self, from: data)
             return pokemon
         } catch  _ as DecodingError {
             throw PokemonAPIError.decodingFailed
-        } catch let error as URLError {
-            throw PokemonAPIError.networkError(error)
-        } catch {
-            throw error
-        }
+        } 
     }
 }
