@@ -10,6 +10,7 @@ import SwiftUI
 struct PokemonDetailView: View {
     let pokemon: Pokemon
     @State var pokemonDetail: PokemonDetail?
+    @State var errorText: String?
     let pokemonAPI = PokemonAPI()
     
     var body: some View {
@@ -19,6 +20,8 @@ struct PokemonDetailView: View {
                 Text("Name: \(pokemonDetail.name)")
                 Text("Height: \(pokemonDetail.height)")
                 Text("Weight: \(pokemonDetail.weight)")
+            } else if let errorText {
+                Text(errorText)
             } else {
                 ProgressView("Loading...")
             }
@@ -27,6 +30,7 @@ struct PokemonDetailView: View {
             do {
                 pokemonDetail = try await pokemonAPI.fetchPokemonDetail(pokemon: pokemon)
             } catch {
+                errorText = error.localizedDescription
                 print(error.localizedDescription)
             }
         }
