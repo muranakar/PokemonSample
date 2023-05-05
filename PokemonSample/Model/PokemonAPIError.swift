@@ -10,5 +10,4 @@ import Foundation
 enum PokemonAPIError: Error {
     case invalidURL
     case decodingFailed
-    case networkError(Error)
 }
