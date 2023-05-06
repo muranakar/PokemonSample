@@ -152,11 +152,19 @@
 			isa = PBXGroup;
 			children = (
 				B27DB6792A0324750060C719 /* PokemonAPI.swift */,
+				B2AEE33C2A070A4200A37541 /* Dummy */,
 				B27DB66F2A030EFC0060C719 /* PokemonDetail.swift */,
 				B27DB6772A0324540060C719 /* PokemonList.swift */,
 				B2D00E5B2A044ECF00139F52 /* PokemonAPIError.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		B2AEE33C2A070A4200A37541 /* Dummy */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Dummy;
 			sourceTree = "<group>";
 		};
 		B2D00E5D2A04589500139F52 /* Network */ = {

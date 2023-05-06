@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PokemonAPI {
+struct PokemonAPI : PokemonAPIProtocol {
     let session = URLSession.shared
 
     private let baseUrl = "https://pokeapi.co/api/v2"
@@ -41,4 +41,9 @@ struct PokemonAPI {
             throw PokemonAPIError.decodingFailed
         } 
     }
+}
+
+protocol PokemonAPIProtocol {
+    func fetchPokemonList() async throws -> PokemonList
+    func fetchPokemonDetail(pokemon: Pokemon) async throws -> PokemonDetail
 }
