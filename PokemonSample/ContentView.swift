@@ -8,12 +8,16 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var pokemonList: PokemonList?
-    private let pokemonAPI = PokemonAPI()
+    @ObservedObject private var pokemonListViewModel: PokemonListViewModel
+
+    init(pokemonListViewModel: PokemonListViewModel) {
+        self.pokemonListViewModel = pokemonListViewModel
+    }
+
     var body: some View {
         NavigationView {
             VStack {
-                if let pokemonList = pokemonList {
+                if let pokemonList = pokemonListViewModel.pokemonList {
                     List(pokemonList.results , id: \.name) { pokemon in
                         NavigationLink(destination: PokemonDetailView(pokemon: pokemon)) {
                             Text(pokemon.name)
@@ -23,13 +27,10 @@ struct ContentView: View {
                 } else {
                     ProgressView("Loading...")
                 }
+
             }
             .task {
-                do {
-                    self.pokemonList = try await pokemonAPI.fetchPokemonList()
-                } catch {
-                    print(error.localizedDescription)
-                }
+                await pokemonListViewModel.fetchPokemonList()
             }
         }
     }
@@ -37,6 +38,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(pokemonListViewModel: PokemonListViewModel(pokemonAPI: PokemonAPI()))
     }
 }
