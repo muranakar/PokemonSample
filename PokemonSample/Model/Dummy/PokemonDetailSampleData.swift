@@ -8,6 +8,21 @@
 import Foundation
 
 struct PokemonDetailSampleData {
+    let pokemon =  PokemonDetail(
+        id: 25,
+        name: "Pikachu",
+        baseExperience: 112,
+        height: 4,
+        weight: 60,
+        types: [
+            PokemonType(slot: 1, type: TypeName(name: "Electric"))
+        ],
+        abilities: [
+            Ability(slot: 1, ability: AbilityName(name: "Static"))
+        ],
+        sprites: Sprites(frontDefault: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png")
+    )
+
     let pokemons = [
         PokemonDetail(
             id: 25,
