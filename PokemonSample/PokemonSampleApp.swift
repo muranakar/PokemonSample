@@ -2,7 +2,6 @@
 //  PokemonSampleApp.swift
 //  PokemonSample
 //
-//  Created by 村中令 on 2023/05/04.
 //
 
 import SwiftUI
@@ -11,7 +10,7 @@ import SwiftUI
 struct PokemonSampleApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView(pokemonListViewModel: PokemonListViewModel())
+            ContentView(pokemonListViewModel: PokemonListViewModel(pokemonAPI: MockPokemonAPI(returnPokemonAPIError: .decodingFailed)))
         }
     }
 }

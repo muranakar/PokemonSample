@@ -24,8 +24,10 @@ struct ContentView: View {
                         }
                     }
                     .navigationBarTitle("Pokemon List")
+                } else if let errorMessage = pokemonListViewModel.errorMessage {
+                    Text(errorMessage)
                 } else {
-                    ProgressView("Loading...")
+
                 }
 
             }
