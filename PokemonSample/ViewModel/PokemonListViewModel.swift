@@ -19,24 +19,21 @@ class PokemonListViewModel: ObservableObject {
 
     func fetchPokemonList() async {
         do {
-            // バックスレッドで処理して、
             let list = try await pokemonAPI.fetchPokemonList()
-            // メインスレッドで、Publishedを書き換える。
-            DispatchQueue.main.async {
-                self.pokemonList = list
-            }
+            await setPokemonList(pokemonList: list)
         } catch let error as HTTPError {
-            DispatchQueue.main.async {
-                self.errorMessage = error.localizedDescription
-            }
+            await setErrorMessage(errorMessage: error.localizedDescription)
         } catch let error as PokemonAPIError {
-            DispatchQueue.main.async {
-                self.errorMessage = error.localizedDescription
-            }
+            await setErrorMessage(errorMessage: error.localizedDescription)
         } catch {
-            DispatchQueue.main.async {
-                self.errorMessage = "An unknown error occurred."
-            }
+            await setErrorMessage(errorMessage: "An unknown error occurred.")
         }
+    }
+    @MainActor private func setPokemonList(pokemonList: PokemonList) {
+        self.pokemonList = pokemonList
+    }
+
+    @MainActor private func setErrorMessage(errorMessage: String) {
+        self.errorMessage = errorMessage
     }
 }
