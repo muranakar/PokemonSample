@@ -1,4 +1,4 @@
 # PokemonSample
 
-MVVMでポケモンのAPIを用いて実装した。
+ポケモンのAPIを用いて実装した。
 ---
