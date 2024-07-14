@@ -1,4 +1,8 @@
 # PokemonSample
+PokemonAPIを利用して、APIを用いた実装を理解する目的で作成しました。
 
-ポケモンのAPIを用いて実装した。
----
+PokemonAPI: https://pokeapi.co/
+
+参考にしたプロジェクト: https://github.com/kinkofer/PokemonAPI
+
+
